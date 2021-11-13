@@ -1,0 +1,2 @@
+# zompt
+Simple Python prompt.
