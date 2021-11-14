@@ -1,26 +1,38 @@
-from os import system, name
-from prompt_toolkit import prompt
+import tty
+import sys
+import termios
 
 class InputPrompt:
 
-  def __init__(self, prompt_text):
-    self._prompt_text = prompt_text
-    #self.clear()
+  def __init__(self, options):
 
-  #def clear(self):
-  #  
-  #    # for windows
-  #    if name == 'nt':
-  #        _ = system('cls')
-  #  
-  #    # for mac and linux(here, os.name is 'posix')
-  #    else:
-  #        _ = system('clear')
+    self._orig_settings = termios.tcgetattr(sys.stdin)
+    tty.setcbreak(sys.stdin)
+
+    self._input_chars = []
+
+#  def _clear_line(self):
+#    sys.stdout.write("\r\x1b[K")
+#
+#  def _write(self):
+#    self._clear_line()
+#    sys.stdout.write(self._selector.render())
+#    sys.stdout.flush()
 
   def run(self):
-    text = prompt(self._prompt_text)
 
-    # Clear the screen
-    # There is an issue where previous command output is incorrect, so clear the screen after each selection
-    #self.clear()
-    return text
+    self._write()
+
+    try:
+      while True:
+        input_char = x=sys.stdin.read(1)[0]
+        input_ord = ord(input_char)
+        if(input_ord == 10):
+          return "".join(self._input_chars)
+        elif(input_ord == 27):
+          pass
+        else:
+          sys.stdout.write(input_char)
+          self._input_chars.append(input_char)
+    finally:
+      termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self._orig_settings)

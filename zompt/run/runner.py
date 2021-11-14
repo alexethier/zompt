@@ -1,7 +1,5 @@
 import sys
-from zompt.input.loader import Loader
-from zompt.run.auto_runner import AutoRunner
-from zompt.input.prompt.prompt_runner import PromptRunner
+from zompt.api.arrow_selection_prompt import ArrowSelectionPrompt
 
 class Runner:
 
@@ -10,18 +8,18 @@ class Runner:
 
   def run(self):
 
-    loader = Loader()
-    continue_run = loader.run()
-    if(not continue_run):
+    if(len(sys.argv) < 2):
+      print("No arguments given.")
       sys.exit(1)
 
-    child_runner = None
-    if(loader.is_interactive()):
-      child_runner = PromptRunner(loader)
-    else:
-      child_runner = AutoRunner(loader)
+    options = []
+    for index in range(1, len(sys.argv)):
+      arg = sys.argv[index]
+      options.append(arg)
 
-    child_runner.run()
+    arrow_selection_prompt = ArrowSelectionPrompt(options)
+    selection = arrow_selection_prompt.run()
+    print(selection)
 
 def main():
   runner = Runner()
