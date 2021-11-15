@@ -12,6 +12,7 @@ class Boot:
     sys.stdout.flush()
     input_prompt = InputPrompt()
     result = input_prompt.run()
+    print()
     print("Result: " + result)
 
 if __name__ == "__main__":

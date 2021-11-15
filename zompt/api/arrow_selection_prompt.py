@@ -39,19 +39,19 @@ class ArrowSelectionPrompt:
         input_char = x=sys.stdin.read(1)[0]
         input_ord = ord(input_char)
         #print("You pressed: " + str(x) + " " + str(ord(x)))
-        if(input_ord == 10):
+        if(input_ord == ord('\n')):
           self._clear_line()
           sys.stdout.flush()
           return self._selector.selection()
-        elif(input_ord == 91):
+        elif(input_ord == ord('[')):
           input_char2 = x=sys.stdin.read(1)[0]
           input_ord2 = ord(input_char2)
           #print("You pressed: " + str(x) + " " + str(ord(x)))
-          if(input_ord2 == 67):
+          if(input_ord2 == ord('C')):
             self._right_pressed()
-          if(input_ord2 == 68):
+          if(input_ord2 == ord('D')):
             self._left_pressed()
-        elif(input_ord == 27):
+        elif(input_ord == ord('\x1b')):
           pass
     finally:
       termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self._orig_settings)
