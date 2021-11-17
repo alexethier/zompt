@@ -17,7 +17,7 @@ for root, dirs, files in os.walk("." + os.path.sep + project_name, topdown=True,
 
 setup(
   name=project_name,
-  version='0.0.1',    
+  version='0.0.2',
   description='Simple Python Prompt',
   url='https://github.com/alexethier/zompt',
   author='Alex Ethier',
@@ -35,8 +35,5 @@ setup(
       'Programming Language :: Python :: 3.5',
   ],
   entry_points={
-      'console_scripts': [
-          'zompt=zompt.run.runner:main',
-      ],
   },
 )
