@@ -35,7 +35,7 @@ class ArrowSelectionPrompt:
     
     for key in key_generator:
       if(key == "enter"):
-        self._clear_line()
+        #self._clear_line()
         sys.stdout.flush()
         return self._selector.selection()
       elif(key == "arrow-right"):
