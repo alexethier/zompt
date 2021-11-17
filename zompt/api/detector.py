@@ -4,6 +4,7 @@ import time
 import select
 import termios
 import tty
+import string
 
 DELETE_CHAR='\x7f'
 ENTER_CHAR='\n'
@@ -71,5 +72,13 @@ class Detector:
             yield "enter"
           elif item == 27:
             yield "ESC"
+          elif item == 127:
+            yield "delete"
           else:
             yield chr(item)
+            #print("item #: " + str(item))
+            #char = chr(item)
+            #if char in string.printable:
+            #  yield char
+            #else:
+            #  skip = len(capture_group) - index
