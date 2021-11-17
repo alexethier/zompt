@@ -9,6 +9,7 @@ import string
 DELETE_CHAR='\x7f'
 ENTER_CHAR='\n'
 ESC_CHAR='\x1b'
+TAB_CHAR='\t'
 
 SPEED = 0.03
 
@@ -68,15 +69,17 @@ class Detector:
               elif(item3 == 66):
                 skip = 2
                 yield "arrow-down"
-          elif chr(item) == '\n':
+          elif chr(item) == ENTER_CHAR:
             yield "enter"
-          elif item == 27:
+          elif chr(item) == ESC_CHAR:
             yield "ESC"
-          elif item == 127:
+          elif chr(item) == DELETE_CHAR:
             yield "delete"
+          elif chr(item) == TAB_CHAR:
+            yield "tab"
           else:
-            yield chr(item)
             #print("item #: " + str(item))
+            yield chr(item)
             #char = chr(item)
             #if char in string.printable:
             #  yield char
