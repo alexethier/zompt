@@ -6,7 +6,7 @@ class Selector:
 
     self._option_pad = 16
     for option in options:
-      if len(option) > self._option_pad:
+      if len(option) + 7 > self._option_pad:
         self._option_pad = len(option) + 7
 
   def cursor_left(self):
@@ -34,6 +34,7 @@ class Selector:
       padded_strings.append(option.ljust(self._option_pad))
 
     init_pad = "        "
+    #main_string = list("        " + "".ljust(self._option_pad).join(self._options)) # Will need to calc. a new start index.
     main_string = list("        " + "".join(padded_strings).rstrip())
     start_index = (self._index) * self._option_pad + len(init_pad)
     end_index = start_index + len(self._options[self._index])
