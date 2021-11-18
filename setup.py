@@ -17,7 +17,7 @@ for root, dirs, files in os.walk("." + os.path.sep + project_name, topdown=True,
 
 setup(
   name=project_name,
-  version='0.0.3',
+  version='0.0.4',
   description='Simple Python Prompt',
   url='https://github.com/alexethier/zompt',
   author='Alex Ethier',
