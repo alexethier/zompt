@@ -15,40 +15,24 @@ class Selector:
   def cursor_right(self):
     self._index = (self._index + 1) % len(self._options)
 
-#  def render(self):
-#
-#    output_strings = []
-#
-#    for i in range(0, len(self._options)):
-#      if(i == self._index):
-#        output_strings.append("-->[" + self._options[i] + "]")
-#      else:
-#        output_strings.append(self._options[i])
-#
-#    return " ".join(output_strings)
+  def selection(self):
+    return self._options[self._index]
 
   def render(self):
 
     padded_strings = []
+    index = 0
     for option in self._options:
-      padded_strings.append(option.ljust(self._option_pad))
+      padded_option_list = list("     " + option + "     ")
+      if(index == self._index):
+        padded_option_list[1] = "-"
+        padded_option_list[2] = "-"
+        padded_option_list[3] = ">"
+        padded_option_list[4] = "["
+        padded_option_list[-5] = "]"
+      padded_strings.append("".join(padded_option_list))
+      index = index + 1
 
-    init_pad = "        "
-    #main_string = list("        " + "".ljust(self._option_pad).join(self._options)) # Will need to calc. a new start index.
-    main_string = list("        " + "".join(padded_strings).rstrip())
-    start_index = (self._index) * self._option_pad + len(init_pad)
-    end_index = start_index + len(self._options[self._index])
-    main_string[start_index -1] = "["
-    main_string[start_index -2] = ">"
-    main_string[start_index -3] = "-"
-    main_string[start_index -4] = "-"
+    main_string = "   " + "".join(padded_strings)
 
-    if(end_index < len(main_string)):
-      main_string[end_index] = "]"
-      # We need to overwrite the previous line completely so an extra space is needed to cover previous output
-      return "".join(main_string) + " "
-    else:
-      return "".join(main_string) + "]"
-
-  def selection(self):
-    return self._options[self._index]
+    return main_string
