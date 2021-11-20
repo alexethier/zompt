@@ -32,7 +32,7 @@ class ArrowSelectionPrompt:
     self._write()
 
     key_generator = self._detector.run()
-    
+
     for key in key_generator:
       if(key == "enter"):
         #self._clear_line()

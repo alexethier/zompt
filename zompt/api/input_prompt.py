@@ -24,6 +24,7 @@ class InputPrompt:
     key_generator = self._detector.run()
 
     for key in key_generator:
+      #print("AE: " + key)
       if(key == "enter"):
         return "".join(self._input_chars)
       elif(key == "ESC"):
