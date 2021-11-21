@@ -1,14 +1,6 @@
 import sys
-from zompt.api.detector import Detector
+from zeys.api.detector import Detector
 
-#text = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12345678910!@#$%^&*()-=_+[]{}|`~:;"\'\\'
-#CHAR_MAP = {}
-#for char in text:
-#  CHAR_MAP[char] = None
-
-#DELETE_CHAR='\x7f'
-#ENTER_CHAR='\n'
-#ESC_CHAR='\x1b'
 BACKSPACE_OUTPUT_CHAR='\b'
 DELETE_OUTPUT=BACKSPACE_OUTPUT_CHAR + " " + BACKSPACE_OUTPUT_CHAR
 
@@ -24,10 +16,9 @@ class InputPrompt:
     key_generator = self._detector.run()
 
     for key in key_generator:
-      #print("AE: " + key)
       if(key == "enter"):
         return "".join(self._input_chars)
-      elif(key == "ESC"):
+      elif(key == "esc"):
         pass
       elif(key == "delete"):
         # Delete / Backspace

@@ -1,6 +1,6 @@
 import sys
+from zeys.api.detector import Detector
 from zompt.api.selector import Selector
-from zompt.api.detector import Detector
 
 class ArrowSelectionPrompt:
 

@@ -17,7 +17,7 @@ for root, dirs, files in os.walk("." + os.path.sep + project_name, topdown=True,
 
 setup(
   name=project_name,
-  version='0.0.5',
+  version='0.0.6',
   description='Simple Python Prompt',
   url='https://github.com/alexethier/zompt',
   author='Alex Ethier',
@@ -25,7 +25,7 @@ setup(
   license='MIT',
   packages=found_packages,
   package_dir=found_package_dirs,
-  install_requires=[""],
+  install_requires=["zeys"],
   classifiers=[
       'Development Status :: 1 - Planning',
       'License :: OSI Approved :: BSD License',  
