@@ -12,7 +12,7 @@ pip install zompt
 
 # Getting Started
 
-##Input Prompt
+## Input Prompt
 The most simple example of the Input Prompt would look like this:
 ```
 if __name__ == "__main__":

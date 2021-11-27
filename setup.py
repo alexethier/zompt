@@ -21,7 +21,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
   name=project_name,
-  version='0.0.6',
+  version='0.1.0',
   description='Simple Python Prompt',
   long_description=long_description,
   long_description_content_type='text/markdown',
